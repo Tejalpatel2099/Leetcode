@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int majorityElement(std::vector<int>& nums) {
+    int majorityElement(std::vector<int>& nums) { 
         int n = nums.size(); // Get the size of the array
         for (int i = 0; i < n;
              ++i) { // outer loop to iterate through each element in array
