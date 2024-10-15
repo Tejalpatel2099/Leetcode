@@ -1,22 +1,19 @@
 class Solution {
 public:
-    int majorityElement(std::vector<int>& nums) { 
-        int n = nums.size(); // Get the size of the array
-        for (int i = 0; i < n;
-             ++i) { // outer loop to iterate through each element in array
-            int val = nums[i];
-            int freq = 0;
+    int majorityElement(vector<int>& nums) {
+        unordered_map<int, int> m;
+        int n = nums.size();
 
-            for (int j = 0; j < n; ++j) { // inner loop
-                if (nums[j] == val) {     // if found value
-                    freq++;               // frequency increment
-                }
-            }
-            if (freq > n / 2) { // if frequency is greater than n/2 then we
-                                // found majority element.
-                return val;
+        // Step 1: Count occurrences of each element
+        for (int i = 0; i < n; i++) {
+            m[nums[i]]++;
+
+            // Step 2: Check if the current element is the majority element
+            if (m[nums[i]] > n / 2) {
+                return nums[i];  // Return the majority element
             }
         }
-        return -1;
+
+        return -1;  // This line is never reached since the majority element always exists
     }
 };
