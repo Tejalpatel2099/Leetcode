@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int reverse(int x) {
+         int reverse(int x) {
        long  result = 0; 
 
         while( x !=  0) {
