@@ -1,17 +1,17 @@
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
-        // declare a variabler
-        int insertIndex = 1; // so first index will always have unique element
-                             // which is 0 so will start from index 1
-        for (int i = 1; i < nums.size(); i++) {
-                // skip to next index if there is duplicate element 
-            if (nums[i - 1] != nums[i]) {
-                //store unique element at insertindex and increment insertindex by 1 to check other element. 
-                nums[insertIndex] = nums[i];
-                insertIndex++;
+        if (nums.empty())
+            return 0; // Handle edge case for empty array
+
+        int i = 0; // Pointer for the position of unique elements
+        for (int j = 1; j < nums.size(); j++) {
+            if (nums[j] != nums[i]) {
+                i++; // Move to the next position
+                nums[i] =
+                    nums[j]; // Update the array with the new unique element
             }
         }
-        return insertIndex;
+        return i + 1; // Return the count of unique elements
     }
 };
