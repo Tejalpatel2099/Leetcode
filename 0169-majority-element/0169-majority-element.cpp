@@ -10,10 +10,11 @@ public:
 
             // Step 2: Check if the current element is the majority element
             if (m[nums[i]] > n / 2) {
+
                 return nums[i];  // Return the majority element
             }
         }
 
-        return -1;  // This line is never reached since the majority element always exists
+        return -1;  
     }
 };
