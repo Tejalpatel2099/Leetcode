@@ -8,7 +8,7 @@ public:
             if (nums[i] == 1) {
                 count++;  // Increment count for consecutive 1s
                 if (count > maxCount) {
-                    maxCount = count;  // Update maxCount if currentCount is greater
+                    maxCount = count;  // Update  maxCount if cureent count is greater , if not greater than reset it to zero. 
                 }
             } else {
                 count = 0;  // Reset currentCount when it is 0 
