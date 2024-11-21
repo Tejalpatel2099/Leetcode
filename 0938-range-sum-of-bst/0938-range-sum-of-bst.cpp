@@ -16,15 +16,21 @@ public:
         if (root == nullptr) {
             return 0;
         }
+        int sum = 0;
 
-        if (root->val < low) {
+        if (root->val > low) {
             // Skip the left subtree and only explore the right subtree.
-            return rangeSumBST(root->right, low, high);
-        } else if (root->val > high) {
+            sum = sum + rangeSumBST(root->left, low, high);
+        }
+        if (root->val < high) {
             // Skip the right subtree and only explore the left subtree.
-            return rangeSumBST(root->left, low, high);
+            sum = sum + rangeSumBST(root->right, low, high);
         }
         // Node value is within the range, include it and explore both subtrees.
-        return root->val + rangeSumBST(root->left, low, high) + rangeSumBST(root->right, low, high);
+        if (root->val >= low && root->val <= high) {
+            sum = sum + root->val;
+        }
+        return sum;
     }
+    
 };
