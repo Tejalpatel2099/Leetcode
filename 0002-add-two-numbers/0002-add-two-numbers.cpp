@@ -22,22 +22,28 @@ public:
         int carry = 0;
         while( (l1 != NULL || l2 != NULL) || carry) {
             int sum = 0; 
-            if(l1 != NULL) {
-                sum += l1->val; 
+            if(l1 != NULL) {    // l1 is not NULL (still has digits left).
+         
+                sum = sum + l1->val;   // If l1 is not NULL then add its value to  sum and move to next node in l1 
+
                 l1 = l1 -> next; 
             }
             
-            if(l2 != NULL) {
-                sum += l2 -> val; 
+            if(l2 != NULL) {      //  l2 is not NULL (still has digits left).
+
+                sum = sum + l2 -> val; // if l2is not Null then add its value to sum and move to next node in l2 
+
                 l2 = l2 -> next; 
             }
             
-            sum += carry; 
+            sum = sum + carry; //Add the previous carry value to sum. and update carry for next iteration 
+
             carry = sum / 10; 
-            ListNode *node = new ListNode(sum % 10); 
+
+            ListNode *node = new ListNode(sum % 10);  // craeting new node and attach to result 
             temp -> next = node; 
             temp = temp -> next; 
         }
-        return dummy -> next; 
+        return dummy -> next;  // dummy-> next is head of LL  
     }
 };
