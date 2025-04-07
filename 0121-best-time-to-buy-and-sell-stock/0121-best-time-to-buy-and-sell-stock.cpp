@@ -1,41 +1,15 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int maxProfit = 0;
-        int n = prices.size();
+    int minPrice = INT_MAX;  // Start with the highest possible number
+    int maxProfit = 0; 
 
-        // for (int i = 0; i < n; i++) {
-        //     for (int j = i + 1; j < n - 1; j++) {
-        //         int profit = prices[j] - prices[i];
-
-        //         if (profit > maxProfit) {
-        //             maxProfit = profit;
-        //         }
-        //     }
-        // }
-        // return maxProfit;
-
-        int temp[n];
-        for (int i = n - 1; i >= 0; i--) {
-            if (i == n - 1) {
-                temp[i] = prices[i];
-            } else {
-                if (prices[i] > temp[i + 1]) {
-                    temp[i] = prices[i];
-                } else {
-                    temp[i] = temp[i + 1];
-                }
-            }
-        }
-        for (int i = 0; i < n; i++) {
-
-            int Profit = temp[i] - prices[i];
-
-            // if (Profit > maxProfit) {
-            //     maxProfit = Profit;
-            // }
-            maxProfit = max(maxProfit, Profit);
-        }
-           return maxProfit;
+        for (int i = 0; i < prices.size(); i++) {
+        if (prices[i] < minPrice)
+            minPrice = prices[i];  // Found a lower price → better day to buy
+        else if (prices[i] - minPrice > maxProfit)
+            maxProfit = prices[i] - minPrice;  // Found a better profit → update max 
+    }
+        return maxProfit;
     }
 };
