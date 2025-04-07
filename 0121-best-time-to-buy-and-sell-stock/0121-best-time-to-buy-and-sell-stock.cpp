@@ -31,9 +31,10 @@ public:
 
             int Profit = temp[i] - prices[i];
 
-            if (Profit > maxProfit) {
-                maxProfit = Profit;
-            }
+            // if (Profit > maxProfit) {
+            //     maxProfit = Profit;
+            // }
+            maxProfit = max(maxProfit, Profit);
         }
            return maxProfit;
     }
