@@ -1,14 +1,26 @@
 class Solution {
 public:
+    // Return type is vector<vector<int>>.
     vector<vector<int>> generate(int numRows) {
-        vector<vector<int>> ans;
-        for (int i = 0; i < numRows; i++) {
-            vector<int> row(i + 1, 1);
-            for (int j = 1; j < i; j++) {
-                row[j] = ans[i - 1][j] + ans[i - 1][j - 1];
+        vector<vector<int>> triangle;
+        // Base case; first row is always [1].
+        triangle.push_back(vector<int>());
+        triangle[0].push_back(1);
+        for (int rowNum = 1; rowNum < numRows; rowNum++) {
+            vector<int> row;
+            vector<int> prevRow = triangle[rowNum - 1];
+            // The first row element is always 1.
+            row.push_back(1);
+            // Each triangle element (other than the first and last of each row)
+            // is equal to the sum of the elements above-and-to-the-left and
+            // above-and-to-the-right.
+            for (int j = 1; j < rowNum; j++) {
+                row.push_back(prevRow[j - 1] + prevRow[j]);
             }
-            ans.push_back(row);
+            // The last row element is always 1.
+            row.push_back(1);
+            triangle.push_back(row);
         }
-        return ans;
+        return triangle;
     }
 };
