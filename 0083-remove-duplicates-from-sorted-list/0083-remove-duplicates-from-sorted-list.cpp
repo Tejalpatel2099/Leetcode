@@ -15,7 +15,6 @@ public:
 
         while (current && current->next) {
             if (current->val == current->next->val) {
-                ListNode* temp = current->next;
                 current->next = current->next->next;
             } else {
                 current = current->next;
