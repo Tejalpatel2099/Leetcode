@@ -11,11 +11,16 @@
  * };
  */
 class Solution {
-    vector<string> result;
+    public:
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<string> result;
+        dfs(root, "", result);
+        return result;
+    }
 
-    void dfs(TreeNode* node, string path) {
-        if (!node)
-            return;
+private:
+    void dfs(TreeNode* node, string path, vector<string>& result) {
+        if (!node) return;
 
         // Add current node's value to path
         if (!path.empty()) {
@@ -30,12 +35,7 @@ class Solution {
         }
 
         // Recurse on left and right children
-        dfs(node->left, path);
-        dfs(node->right, path);
-    }
-
-    vector<string> binaryTreePaths(TreeNode* root) {
-        dfs(root, "");
-        return result;
+        dfs(node->left, path, result);
+        dfs(node->right, path, result);
     }
 };
