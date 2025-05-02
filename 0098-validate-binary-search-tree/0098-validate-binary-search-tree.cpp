@@ -12,22 +12,19 @@
  */
 class Solution {
 public:
-    vector<int> list;
-    void inorder(TreeNode* root) {
-        if (root == nullptr) {
-            return;
-        }
-        inorder(root->left);
-        list.push_back(root->val);
-        inorder(root->right);
-    }
     bool isValidBST(TreeNode* root) {
-        inorder(root);
-        for (int i = 1; i < list.size(); i++) {
-            if (list[i] <= list[i - 1]) {
-                return false;
-            }
-        }
-        return true;
+        return helper(root, LONG_MIN, LONG_MAX);
+    }
+
+    bool helper(TreeNode* node, long minVal, long maxVal) {
+        if (!node) return true;
+
+        if (node->val <= minVal || node->val >= maxVal)
+            return false;
+
+        // Left: valid range is (min, node->val)
+        // Right: valid range is (node->val, max)
+        return helper(node->left, minVal, node->val) &&
+               helper(node->right, node->val, maxVal);
     }
 };
