@@ -13,36 +13,38 @@
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> ans;
+        vector<vector<int>> ans;  // Final result: stores nodes level by level
+
         if (root == nullptr) {
-            return ans;
+            return ans;  // If the tree is empty, return empty list
         }
 
-        queue<TreeNode*> q;
-        q.push(root);
+        queue<TreeNode*> q;  // Queue for BFS
+        q.push(root);        // Start BFS from the root
 
         while (!q.empty()) {
+            int size = q.size();         // Number of nodes at current level
+            vector<int> level;           // Stores values for the current level
 
-            int size = q.size();
-
-            vector<int> level;
-
+            // Process all nodes at the current level
             for (int i = 0; i < size; i++) {
+                TreeNode* node = q.front();  // Get front node
+                q.pop();                     // Remove it from the queue
 
-                TreeNode* node = q.front();
+                level.push_back(node->val);  // Add its value to current level
 
-                q.pop();
-
-                level.push_back(node->val);
-
+                // Enqueue left child if exists
                 if (node->left != nullptr) {
                     q.push(node->left);
                 }
+
+                // Enqueue right child if exists
                 if (node->right != nullptr) {
                     q.push(node->right);
                 }
             }
 
+            // Add current level to the result
             ans.push_back(level);
         }
 
