@@ -36,4 +36,4 @@ public:
 
 // the diameter is sum of depth of left and right subtree at any node 
 // for each node we left depth and right depth update the diameter as left + right 
-// recursively dpo for each node and keep track of maximium diameter 
+// recursively do for each node and keep track of maximium diameter. 
