@@ -11,28 +11,20 @@
  */
 class Solution {
 public:
-    int ans = 0;  // Variable to store the final answer (number of valid paths)
+    int ans = 0;
 
-    // Main function that will be called initially
     int pathSum(TreeNode* root, int sum) {
         if (root) {
-            // Try to find all paths starting from current root
-            dfs(root, sum);
-
-            // Recurse on left and right subtrees to consider new starting points
+            dfs(root, (long long)sum);  // Cast to long long here
             pathSum(root->left, sum);
             pathSum(root->right, sum);
         }
-        return ans;  // Return total number of valid paths found
+        return ans;
     }
 
-    // Helper function to count paths starting exactly from 'root' that sum to 'sum'
-    void dfs(TreeNode* root, int sum) {
-        if (!root) return;  // Base case: if node is null, return
-
-        if (root->val == sum) ans++;  // Found a path with required sum
-
-        // Continue to explore down left and right subtree reducing the required sum
+    void dfs(TreeNode* root, long long sum) {
+        if (!root) return;
+        if ((long long)root->val == sum) ans++;
         dfs(root->left, sum - root->val);
         dfs(root->right, sum - root->val);
     }
