@@ -29,3 +29,15 @@ public:
         dfs(root->right, sum - root->val);
     }
 };
+
+
+// Treat each node as a potential starting point of a path.
+
+//For each node:
+
+//Use DFS to explore all paths that start at this node.
+
+//While going down, keep subtracting node values from the target.
+
+//If at any point, the running sum becomes zero → valid path found → increment count.
+
