@@ -9,42 +9,34 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+//Pick the middle element of the array (or subarray) — this becomes the root.
+//Recursively:
+//Build the left subtree from the left half
+//Build the right subtree from the right half
+//Base case: if start > end, return nullptr.
+
+
+
+
 class Solution {
-private:
-    TreeNode* convertBST(int left, int right, vector<int>& arr)
-    {
-        /* if i dont have any element in array then my right becomes -1 cause my right is my size and my size is 0 - 1 means -1 so from that i can say i don't have element and return nullptr.
-        */
-        if(left > right)
-        {
-            return nullptr;
-        }
-        // calculate the value of mid
-        /*
-           we write left + ((right - left) / 2) cause at some point if we write (left + right) / 2 will go outside of my  integer if my left and right both are big number in that case this type of probelm is occurs so for that we use     that left + ((right - left) / 2) both gives same answer
-        */
-        int mid = left + ((right - left) / 2);
-        // creating new tree and put mid value at root node
-        TreeNode* root = new TreeNode(arr[mid]);
-        /* in left size node we have to put the value of left side
-           array and for that we are going left in tree and we put
-           mid - 1 value from array and we are calling this function
-           recursively
-        */
-        root -> left = convertBST(left, mid - 1, arr);
-        /* in right size node we have to put the value of right side
-           array and for that we are going right in tree and we put
-           mid + 1 value from array and we are calling this function
-           recursively
-        */
-        root -> right = convertBST(mid + 1, right, arr);
-        // at the end we are returning the root(means whole tree)
-        return root;
-    }
 public:
     TreeNode* sortedArrayToBST(vector<int>& nums) {
-        // fetching size of the array nums
-        int size = nums.size() - 1;
-        return convertBST(0, size, nums);
+        return buildBST(nums, 0, nums.size() - 1);
     }
-};
+
+private:
+    // Helper function for recursive construction
+    TreeNode* buildBST(vector<int>& nums, int left, int right) {
+        if (left > right) return nullptr;  // Base case: empty range
+
+        int mid = left + (right - left) / 2;  // Choose middle element to avoid overflow
+        TreeNode* root = new TreeNode(nums[mid]);  // Mid becomes root
+
+        // Recursively build left and right subtrees
+        root->left = buildBST(nums, left, mid - 1);
+        root->right = buildBST(nums, mid + 1, right);
+
+        return root;
+    }
+}
