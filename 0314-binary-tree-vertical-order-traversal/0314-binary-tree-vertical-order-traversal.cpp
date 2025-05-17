@@ -27,6 +27,7 @@ public:
             TreeNode* cur = q.front().first;
             int index = q.front().second;
             q.pop();
+            
             if (cur->left) {
                 q.push({cur->left, index-1});
 
@@ -50,7 +51,7 @@ public:
             } 
         }
 
-         vector<vector<int>> result;
+        vector<vector<int>> result;
         for (auto it : mp) {
             result.push_back(it.second);
         }
