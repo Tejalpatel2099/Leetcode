@@ -1,3 +1,4 @@
+// Two pointer approach .... 
 class Solution {
 public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
@@ -17,3 +18,6 @@ public:
         return vector<int>(arr.begin() + left, arr.begin() + right + 1);
     }
 };
+
+// time complexity :- O(n - k)
+// space complexity :- O(k)
