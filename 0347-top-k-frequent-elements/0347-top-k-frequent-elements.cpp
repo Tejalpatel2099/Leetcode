@@ -1,29 +1,34 @@
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        unordered_map<int, int> freq;
+        unordered_map<int, int> freqMap;
 
-        // count of frequency of each element 
-        for (int i = 0; i < nums.size(); i++) {
-            int num = nums[i];
-            freq[num] = freq[num] + 1;
+        // Step 1: Count frequency of each number
+        for (int num : nums) {
+            freqMap[num]++;
         }
 
-        priority_queue<pair<int,int>> pq;
+        // Step 2: Create buckets. Index = frequency, Value = list of numbers
+        int n = nums.size();
+        vector<vector<int>> buckets(n + 1); // because max frequency can be n
 
-        // Push all frequency pairs into the priority queue
-        for (auto& pair : freq) {
-         int number = pair.first;
-        int frequency = pair.second;
-        pq.push({frequency, number}); 
+        for (auto& pair : freqMap) {
+            int number = pair.first;
+            int frequency = pair.second;
+            buckets[frequency].push_back(number);
         }
-        
-        vector<int> result; 
-        for (int i = 0; i < k; i++) {
-            pair<int, int> top = pq.top(); // get top pair
-            pq.pop();                      // remove it from heap
-            result.push_back(top.second); // add the number (not frequency) to result
+
+        // Step 3: Collect k most frequent elements from the end
+        vector<int> result;
+        for (int i = n; i >= 0 && result.size() < k; --i) {
+            for (int num : buckets[i]) {
+                result.push_back(num);
+                if (result.size() == k) {
+                    break;
+                }
+            }
         }
+
         return result;
     }
 };
