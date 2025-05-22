@@ -1,19 +1,35 @@
 class Solution {
 public:
-    int maxSubArray(vector<int>& arr) {
-   int res = arr[0];
-    int maxEnding = arr[0];
+    int maxSubArray(vector<int>& nums) {
+        //.........Kadane's algorithm ..........//
+        int currSum = 0; 
+        int maxSum = INT_MIN;
 
-    for (int i = 1; i < arr.size(); i++) {
-      
-        // Find the maximum sum ending at index i by either extending 
-        // the maximum sum subarray ending at index i - 1 or by
-        // starting a new subarray from index i
-        maxEnding = max(maxEnding + arr[i], arr[i]);
-      
-        // Update res if maximum subarray sum ending at index i > res
-        res = max(res, maxEnding);
-    }
-    return res;
+        for (int i = 0; i < nums.size(); i++) {
+            currSum = currSum + nums[i];
+            maxSum = max(currSum, maxSum);
+
+            if (currSum < 0) {
+                currSum = 0; // reset value to zero 
+            }
+        }
+
+        return maxSum;
     }
 };
+// tc :- O(n)
+// sc:-  O(1)
+
+    //...........bRute Force............//
+    //     int maxSum = INT_MIN;
+
+    //     for (int i = 0; i < nums.size() ; i++) {
+    //         int currSum = 0;
+    //         for (int j = i; j < nums.size(); j++) {
+    //             currSum += nums[j];
+    //             maxSum = max (currSum, maxSum);
+    //         }
+    //     } 
+    //     return maxSum;
+    // }
+// tc :- O(n2) and Sc :- O(1)
