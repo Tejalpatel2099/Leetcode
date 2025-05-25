@@ -24,3 +24,4 @@ public:
 
  // If val is less than root value, we search in the left side 
  // If val is greater than root value, we search in the right side 
+ // Tc:- O(h) and SC :- O(n) becoz of recursive stack 
