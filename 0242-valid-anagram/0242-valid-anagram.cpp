@@ -4,8 +4,16 @@
 // and sc :-   O(1) if sorting in-place
 
 //.......optimized ...............
-// we can improve this to O(n) time using hashmap or array to count character frequenceies. 
-// if length differs return false and create a frequency count of each character in s , decrese the same count as we go through s , and if any count goes below zero -> not an anagram.  
+//First, if the two strings have different lengths, they can’t be anagrams — so I return false right away.
+
+//Next, I create a frequency counter for the first string s.
+//I go through each character and count how many times each letter appears.
+
+//Then, I go through the second string t, and for every character, I subtract from the frequency count.
+
+//If at any point, the count goes below zero, that means there are more of that character in t than in s, so I return false.
+
+//If I reach the end and all counts are balanced (i.e., no negative values), then both strings have the same characters in the same counts, so they are anagrams — I return true.”  
 // Tc :- o(n) and sc :- o(1)
 
 class Solution {
