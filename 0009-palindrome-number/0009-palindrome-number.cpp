@@ -1,3 +1,14 @@
+// Can i assume that input is a 32-bit signed integer? Also, do we consider negative numbers as non-palindromes by definition? 
+///The task is to check if the given number reads the same forwards and backwards. 
+//...............brute force ...........
+//One brute-force approach would be to convert the integer to a string, reverse it, and compare it to the original string. But that uses extra space for the string conversion
+//Time Complexity: O(n) where n is number of digits
+// Space Complexity: O(n) due to the string
+
+// ......optimized ...........
+//A more optimized solution is to reverse the number mathematically and compare it with the original. If both are equal, it's a palindrome.
+
+
 class Solution {
 public:
     bool isPalindrome(int x) {
@@ -18,3 +29,7 @@ public:
         return original == reverse;
     }
 };
+
+// TC:- O(log n) 
+// Sc  :- O(1) 
+
