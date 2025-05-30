@@ -19,30 +19,36 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
+
+        // Step 1: If lengths are not equal, they can't be anagrams
         if (s.size() != t.size()) {
-            return false;  // If lengths are different, they can't be anagrams.
+            return false;
         }
 
+        // Step 2: Create a frequency map to count characters in string s
         unordered_map<char, int> freq;
-        
-        // Count frequency of each character in string s
+
+        // Count how many times each character appears in s
         for (int i = 0; i < s.size(); i++) {
-            freq[s[i]]++;
+            freq[s[i]]++;  // increment count of character s[i]
         }
 
-        // Subtract frequency based on string t
+        // Step 3: Reduce the count based on characters in string t
         for (int i = 0; i < t.size(); i++) {
             if (freq.count(t[i])) {
-                freq[t[i]]--;
+                freq[t[i]]--;  // decrease count for character t[i]
+
+                // If count becomes 0, remove it from map (clean-up)
                 if (freq[t[i]] == 0) {
                     freq.erase(t[i]);
                 }
             } else {
-                return false;  // If a character in t doesn't exist in s, not an anagram.
+                // If character in t is not in s or used more times → not anagram
+                return false;
             }
         }
 
-        // If the map is empty, it's an anagram
-        return freq.empty();
+        // Step 4: If all counts are balanced, map should be empty
+        return freq.empty();  // true if valid anagram, false otherwise
     }
 };
