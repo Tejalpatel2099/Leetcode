@@ -53,7 +53,8 @@ public:
         // Mark the current cell as visited by setting it to '0' (water)
         grid[i][j] = '0';
 
-        // Visit all 4 connected directions: up, down, left, right
+        // I willuse recursive dfs function in all directions
+        // Visit all 4 connected directions: up, down, left, right,
         dfs(grid, i + 1, j); // down
         dfs(grid, i - 1, j); // up
         dfs(grid, i, j + 1); // right
