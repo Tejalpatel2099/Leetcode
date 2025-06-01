@@ -23,7 +23,7 @@
 // Space Complexity: O(V + E) — For the adjacency list and queue.
 
 class Solution {
-public:
+public:  
     
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         int v = numCourses;
