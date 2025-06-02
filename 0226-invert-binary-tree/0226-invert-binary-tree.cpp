@@ -25,3 +25,10 @@ public:
         return root;
     }
 };
+
+
+
+/*I solve this recursively by visiting each node and swapping its left and right children.
+I apply the same logic to the left and right subtrees.
+The base case is when the node is null, in which case I return.
+Since every node is visited once, the time complexity is O(n) */
