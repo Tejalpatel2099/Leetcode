@@ -7,8 +7,6 @@
 // To solve this problem efficiently, I consider the role of the character with the highest frequency. If this character occurs more than (n + 1)/2 times, there’s no way to rearrange the string to avoid duplicates, so I return "". Otherwise, I can place this character at alternate indices to maximize spacing, and then fill in the remaining characters. This approach ensures no two same characters are adjacent and is linear in time and space, making it optimal. 
 //  Case 1: Max frequency > (n + 1) / 2 → Impossible
 //If any character appears more than half the length of the string (rounded up), then even after placing it at every alternate index, we’ll run out of gaps and be forced to place two same characters together — which is not allowed.
-// Case 2: Max frequency == (n + 1) / 2 → Perfect Fit
-//If the max frequency is exactly half or half rounded up, then we can place that character at all even indices and then place the rest at odd positions.
 //  Case 3: Max frequency < (n + 1) / 2 → Always Possible
 //This is the most general and most common case. If the most frequent character occurs less than half, we can always space it out properly and fill in the remaining characters between them
 
