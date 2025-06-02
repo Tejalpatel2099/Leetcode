@@ -3,8 +3,9 @@
 // adjacent 1s either horizontally or vertically. So, I need to explore each
 // group of connected 1s and count how many such groups exist. Question s:-
 // 1. Can the grid be empty or null?
+// how would island look like ? 
 // 2. Can diagonals connections form a island?
-// 3. Can i modify the input array to avoid using additional space?
+// 3. Can you give me few more examples? 
 
 // The moment I see a 1 that is part of land, I can start a DFS (or BFS) to
 // flood fill and mark the entire island so I don’t count it again. I repeat
@@ -12,8 +13,8 @@
 // evry time I find a 1 it is new island. SO i will increment the island count
 // and run dfs from that cell to mark all connected land as visited.and will
 // continue checking rest of grid.
-// ime: O(m × n) — Each cell is visited once.
-// Space: O(m × n) for recursion stack in worst-case (for DFS)
+// Time: O(m × n) — so we will visit each node only once, either through nested loops or dfs calls 
+// Space: O(m × n) for recursion stack in worst-case (for DFS) 
 
 class Solution {
 public:
