@@ -1,3 +1,30 @@
+//  Can the grid be empty?
+// Can there be only fresh or only rotten oranges?
+//Can we assume the rotting only spreads in 4 directions (no diagonals)? 
+
+// ...........Brute force approach 
+//At each minute, scan the entire grid.
+// For every rotten orange, rot adjacent fresh oranges.Repeat this until:
+// All oranges are rotten ✅
+// Or no change happens in a full pass (then return -1)
+// Time complexity is O((mn)^2) — inefficient.
+
+//..........BFS ............
+// Treat all initial rotten oranges (value 2) as starting points for BFS (multi-source
+// For each rotten orange, push its coordinates to a queue.
+//Use BFS traversal to:
+//Track the minutes it takes for fresh oranges to rot.
+
+//Rot adjacent oranges and add them to the queue.
+
+// Keep a count of time and remaining fresh oranges.
+
+// Time Complexity:
+// O(m × n) — each cell is processed once.
+
+//  Space Complexity:
+// O(m × n) — in the worst case, queue can hold all oranges.
+
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
