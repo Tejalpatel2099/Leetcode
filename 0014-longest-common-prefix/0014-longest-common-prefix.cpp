@@ -1,19 +1,20 @@
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {
-        if (strs.empty()) {
-            return "";
-        }
-          for ( int i = 0; i < strs[0].length(); i++) {
-          char currentchar = strs[0][i];
+      // if the list is empty 
+      if (strs.empty()) return "";
 
-          for (int j = 1; j < strs.size();j++) {
-            if (i > strs[j].length() || strs[j][i] != currentchar){
-                return strs[0]. substr(0,i);
-            }
-          }
-          
+    //lets assume first word is prefix 
+    string prefix = strs[0];
+
+    // compare prefix with every other word
+    for (int i = 1; i < strs.size(); i++) {
+        while (strs[i].find(prefix) != 0) {
+            prefix = prefix.substr(0, prefix.size()- 1);
+
+            if (prefix.empty()) return "";
         }
-        return strs[0];
     }
-};
+    return prefix;
+    }
+};  
