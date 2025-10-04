@@ -1,3 +1,9 @@
+// Try every possible pair of days — buy on day i, sell on day j where j > i — and track the maximum profit. 
+//time Complexity: O(n^2)
+// Space Complexity: O(1)
+
+
+
 // You're given a list of stock prices where prices[i] is the price of a stock
 // on day i.
 // You want to buy one day and sell on a later day to get the maximum profit.
