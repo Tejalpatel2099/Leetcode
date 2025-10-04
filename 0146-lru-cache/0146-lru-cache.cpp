@@ -20,7 +20,7 @@
 // recent) and when (put) a key - if key exist , update its value and move front
 // and if does not exist we will add a new node at front and if cache exceeds
 // the capacity  we will remove the node at tail (least reecntly used). Time
-// complexity :-  O(1) space complexity :- O(N) - hasmap and DLL both takes O(N)
+// complexity :-  O(1) space complexity :- O(N) - hashmap and DLL both takes O(N)
 
 class LRUCache {
 public:
@@ -104,7 +104,8 @@ public:
             // Move it to the front
             deleteNode(existingNode);
             addNode(existingNode);
-        } else {
+
+        } else { // if does not exist in map
             // If the cache is at full capacity
             if (m.size() == cap) {
                 Node* lru = tail->prev; // Get the least recently used node
