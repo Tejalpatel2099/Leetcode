@@ -1,3 +1,6 @@
+// 1) can the numbers be negative ?
+// 2) can teh input array be empty ?
+
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
@@ -12,6 +15,7 @@ public:
         return false; // no duplicate found 
     }
 };
+// TC :- O(n) sc:- o(n)
 
 // ........Brute force approach 
 // bool containsDuplicate(vector<int>& nums) {
