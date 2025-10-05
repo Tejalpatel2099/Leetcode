@@ -38,7 +38,7 @@ public:
             if (freq.count(t[i])) {
                 freq[t[i]]--;  // decrease count for character t[i]
 
-                // If count becomes 0, remove it from map (clean-up)
+                // If count becomes 0, remove it from map 
                 if (freq[t[i]] == 0) {
                     freq.erase(t[i]);
                 }
