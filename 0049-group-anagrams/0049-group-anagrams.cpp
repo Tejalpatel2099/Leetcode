@@ -9,7 +9,7 @@
 //  so anagrasm have teh same characters in different order so, if we sort the letters of any two anagrams, the result willbe same string . 
 // for eachs tring , sort it , use that sorted string as a key in hash map and store the original(unsorted string ) in value and all anagrams willhave the same sorted key , so they will be grouped together under that key. finally collect allvalues from hash map and retunthem . 
 // tc:-  You sort it, which takes O(k log k)
-// You do this for n strings → O(n × k log k) and sc :- O(n × k)
+// You do this for n strings → O(n × k log k) and sc :- O(n × k)Storing all strings in groups + keys
 
 
 class Solution {
