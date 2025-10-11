@@ -1,7 +1,4 @@
-// Try every possible pair of days — buy on day i, sell on day j where j > i —
-// and track the maximum profit.
-// time Complexity: O(n^2)
-// Space Complexity: O(1)
+//Can I assume all prices are positive?
 
 // You're given a list of stock prices where prices[i] is the price of a stock
 // on day i.
@@ -9,7 +6,14 @@
 // Return the maximum profit you can achieve. If you can't make a profit, return
 // 0.
 
-// so, here i will intitalize minprice for very large number. Then i will
+// /.................BRUTE FORCE...............
+// Try every possible pair of days — buy on day i, sell on day j where j > i and so , profit = prices[j] - prices[i].
+// and track the maximum profit.
+// time Complexity: O(n^2) - check all pairs 
+// Space Complexity: O(1) 
+
+//.....................GREEDY APPRAOCH...............
+// so, here i will intitalize minprice for very large number. Then i will initialize 
 // maxProfit = 0; and i will check if current Price < minprice then i will
 // update minprice and same for max profit Time Complexity: O(n) — We traverse
 // the array once.
@@ -24,27 +28,27 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        // Initialize the minimum price to a very large value (infinity)
-        // This helps us track the lowest price seen so far
+
+      // Start by setting min price to first day price 
+      // this helps track lowest price i can buy so far. 
         int minPrice = prices[0];
 
-        // Initialize maxProfit to 0
-        // We assume no profit at the beginning
+    // start with 0 profit becuase i haven't made any transaction yet
         int maxProfit = 0;
 
-        // Traverse the price array from day 0 to the last day
+      // loop through all days starting from second day 
         for (int i = 1; i < prices.size(); i++) {
-            // If the current price is less than the minimum price we've seen
-            // we update minPrice to this new lower value
+            
+            // if todays price is higher than min price it. means selling today could make a profit so i will check if this profit is greater than current maxProfit
             if (prices[i] > minPrice) {
                 maxProfit = max(maxProfit, prices[i] - minPrice);
             }
-            // Else, we check if selling on this day would give us more profit
-            // than we've recorded so far. If yes, update maxProfit
+            // i will always update minPrice if we find a smaller price so this will ensure that i am always buying at lowest price. 
+           
             minPrice = min(minPrice, prices[i]);
         }
 
-        // After checking all days, return the maximum profit found
+// after checking all days, maxprofit will hold the maximum profit.
         return maxProfit;
     }
 };
