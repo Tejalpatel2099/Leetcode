@@ -5,7 +5,7 @@ public:
         vector<vector<int>> ans;
         int n = heights.size();
         int m = heights[0].size();
-
+// for visited arry 
         vector<vector<bool>> pac(n, vector<bool>(m));
         vector<vector<bool>> atl(n, vector<bool>(m));
         
