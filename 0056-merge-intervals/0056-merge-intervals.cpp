@@ -1,9 +1,14 @@
 // Questions 
+// Can I assume the intervals are all valid?
+//Can intervals be touching but not overlapping, like [1,3] and [3,5]? Should these be merged?
 // Are the intervals sorted or not ? 
+// Can there be duplicate intervals in the input?
+// Is it guaranteed that the input will contain at least one interval?
+
 // .....................BRUTE FORCE ...............
 // idea is to Check every interval with all the rest and merge any overlapping ones using two loops. so first I will sort the intervals by their start time. and then use outer loop tpo pick each interval one by one. For each picked interval, use an inner loop to compare and merge it with the next intervals that overlap with it. If two intervals overlap, merge them by updating the end time.Skip any intervals that are already merged.Add the final merged interval to the result list.
 // How to check overlap?--> If next interval's start <= current end, they overlap.
-// TC :- O(n2)  and sc :- O(n) 
+// TC :- O(n log n)  and sc :- O(n) 
 
 // Then I optimized it by first sorting the intervals by start time. After sorting, I only need to compare each interval with the last one in the result. If they overlap, I merge them. If not, I add it as a new interval. This reduces the time to O(n log n) due to sorting, and merging happens in one pass.
 // Tc :- O(n log n) and sc :- O(n) Output list of merged interval. 
