@@ -50,3 +50,6 @@ public:
         return "Neither";
     }
 };
+
+// Time: O(L) where L is the length of the input. Each character is examined a constant number of times.
+// Space: O(1)
