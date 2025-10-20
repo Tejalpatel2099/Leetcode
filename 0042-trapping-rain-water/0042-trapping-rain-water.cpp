@@ -34,7 +34,7 @@ public:
             lmax = max(lmax, height[l]);
             rmax = max(rmax, height[r]);
 
-            // The key insight: water is trapped based on the smaller of the two max heights
+            // The key insight: water is trapped based on the smaller of the two max heights ( water calculation depends on minimum of max heights l and r)
             if (lmax < rmax) {
                 // Since lmax is smaller, it is the limiting factor on the left
                 // Water trapped at this point = lmax - current height (if lmax > height[l])
