@@ -1,11 +1,11 @@
-<h2><a href="https://leetcode.com/problems/largest-combination-with-bitwise-and-greater-than-zero">2275. Largest Combination With Bitwise AND Greater Than Zero</a></h2><h3>Medium</h3><hr><p>The <strong>bitwise AND</strong> of an array <code>nums</code> is the bitwise AND of all integers in <code>nums</code>.</p>
+<h2><a href="https://leetcode.com/problems/largest-combination-with-bitwise-and-greater-than-zero/description/?envType=company&envId=adobe&favoriteSlug=adobe-three-months">2275. Largest Combination With Bitwise AND Greater Than Zero</a></h2><h3>Medium</h3><hr><p>The <strong>bitwise AND</strong> of an array <code>nums</code> is the bitwise AND of all integers in <code>nums</code>.</p>
 
 <ul>
 	<li>For example, for <code>nums = [1, 5, 3]</code>, the bitwise AND is equal to <code>1 &amp; 5 &amp; 3 = 1</code>.</li>
 	<li>Also, for <code>nums = [7]</code>, the bitwise AND is <code>7</code>.</li>
 </ul>
 
-<p>You are given an array of positive integers <code>candidates</code>. Evaluate the <strong>bitwise AND</strong> of every <strong>combination</strong> of numbers of <code>candidates</code>. Each number in <code>candidates</code> may only be used <strong>once</strong> in each combination.</p>
+<p>You are given an array of positive integers <code>candidates</code>. Compute the <strong>bitwise AND</strong> for all possible <strong>combinations</strong> of elements in the <code>candidates</code> array.</p>
 
 <p>Return <em>the size of the <strong>largest</strong> combination of </em><code>candidates</code><em> with a bitwise AND <strong>greater</strong> than </em><code>0</code>.</p>
 
