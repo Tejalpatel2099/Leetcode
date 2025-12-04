@@ -15,7 +15,6 @@ public:
         for (int k = i; k <= j; k++) {
             if (directions[k] != 'S') collisions++; // count L and R only
         }
-
         return collisions;
     }
 };
