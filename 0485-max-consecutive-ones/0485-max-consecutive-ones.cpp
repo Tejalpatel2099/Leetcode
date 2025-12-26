@@ -11,9 +11,10 @@ public:
             } else {
                 count = 0;
             }
-            if (count > maxCount) {
-                maxCount = count;
-            }
+            // if (count > maxCount) {
+            //     maxCount = count;
+            // }
+            maxCount = max(count, maxCount);
         }
         return maxCount;
     }
