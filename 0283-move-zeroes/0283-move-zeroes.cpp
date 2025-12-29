@@ -1,28 +1,28 @@
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
-        
-        // step 1:- we copy all non zero elements to temp array from array given 
-        // step 2: - fill all remaining places with zeros in temp array 
-        // step 3:- copy all elements  from temp to array 
+      int j = -1;
 
-        int  n = nums.size();
-        vector<int>temp(n);
-
-         // take j to keep track on temp array 
-         int j = 0; 
-
-         for (int i = 0; i < n; i++) {
-            if (nums[i] != 0) {
-                temp[j++] = nums[i];
+        // Find the first zero
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] == 0) {
+                j = i;
+                break;
             }
-         }
-         while (j < n) {
-           temp[j++] = 0; 
-         }
-            // copying all elements from temp to array 
-        for (int i = 0; i < n; i++) {
-            nums[i] = temp[i];
+        }
+
+        // If no zero found, return
+        if (j == -1) return;
+
+        // Start from the next index of first zero
+        for (int i = j + 1; i < nums.size(); i++) {
+            // If current element is non-zero
+            if (nums[i] != 0) {
+                // Swap with nums[j]
+                swap(nums[i], nums[j]);
+                // Move j to next zero
+                j++;
+            }
         }
      }
 };
