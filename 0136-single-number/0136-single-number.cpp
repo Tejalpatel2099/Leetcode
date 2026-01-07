@@ -13,6 +13,6 @@ public:
                 return nums[i];
             }
         }
-        return -1; // Should never reach here if input is valid
+        return -1; 
     }
 };
