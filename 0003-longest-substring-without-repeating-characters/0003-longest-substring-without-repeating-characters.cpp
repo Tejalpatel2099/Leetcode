@@ -1,6 +1,10 @@
+// clarifying questions
+// Can the input string contain spaces or special characters?
+//  Should the result be the actual substring or just the length?
+//  Can the string be empty?
 // Start with a Brute-Force Approach
 //  “I’d like to start with a brute-force solution
-
+//....................................................................................
 // “In the brute-force version, I can try every possible substring using two
 // nested loops. For each substring, I check whether it contains all unique
 // characters by inserting them into a set.”
@@ -17,7 +21,7 @@
 
 // “This gives us a time complexity of O(n³) — O(n²) for substrings and O(n) to
 // check uniqueness. It’s correct but too slow for large inputs.”
-
+//.........................................................................................
 //  3. Transition to Optimized Approach
 // “To improve this, I’ll use a sliding window approach with a hash set or map
 // to avoid rechecking characters.”
@@ -51,7 +55,7 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        // craete a vecxtor of size 256 and all values are initialkized
+        // create a vector of size 256 and all values are initialized
         // to -1 means this character has not been seen yet . and it
         // will store last index  of each character in the string .
         vector<int> map(256, -1);
@@ -60,26 +64,25 @@ public:
         int n = s.size();
         int len = 0;        // stores length of the string
         while (right < n) { // loop through string using right pointer
-            if (map[s[right]] !=
-                -1) // if current character s[right] was seen before and it is
-                    // still inside the current windoe(left, right) then
-                left = max(map[s[right]] + 1,
-                           left); // i will move left pointer to one position
-                                  // after the last index of that character
+            // if current character s[right] was seen before and it is
+            // still inside the current windoe(left, right) then
+            if (map[s[right]] != -1) {
+                // i will move left pointer to one position
+                // after the last index of that character
+                left = max(map[s[right]] + 1, left);
+            }
 
-            map[s[right]] = right; // updater the last seen index of s[right] to
-                                   // the current psotion right
-
-            len = max(len, right - left +
-                               1); // update length if current substring (r - l
-                                   // + 1) is longer than the previous
-            right++;               // move to next charac ter in the string
+            // updater the last seen index of s[right] to
+            // the current psotion right
+            map[s[right]] = right;
+            // update length if current substring (r - l
+            // + 1) is longer than the previous
+            len = max(len, right - left + 1);
+            // move to next charac ter in the string
+            right++;
         }
         return len;
     }
 };
 
-// clarifying questions
-// Can the input string contain spaces or special characters?
-//  Should the result be the actual substring or just the length?
-//  Can the string be empty?
+
