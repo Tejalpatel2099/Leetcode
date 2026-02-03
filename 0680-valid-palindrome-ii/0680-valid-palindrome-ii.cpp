@@ -3,11 +3,12 @@ public:
 // helper function to check if substring is palindrome or not 
 bool isPalindrome(string s, int left, int right) {
         while (left < right) {
+            // if characters do not match then its is not palindrome 
             if (s[left] != s[right]) return false;
             left++;
             right--;
         }
-        return true;
+        return true; // if we never found mismatch it is palindrome 
     }
 
     bool validPalindrome(string s) {
