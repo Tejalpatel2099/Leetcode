@@ -2,29 +2,38 @@
 class Solution {
 public:
     string minRemoveToMakeValid(string s) {
-        unordered_set<int>BI;
-        stack<int>st;
+        int n = s.size();
+        stack<int> st;
+        vector<bool> remove(n, false);
 
-        for (int i = 0; i < s.length(); i++) {
+        // Step 1: Scan the string
+        for (int i = 0; i < n; i++) {
             if (s[i] == '(') {
                 st.push(i);
-            }
+            } 
             else if (s[i] == ')') {
-                if (st.empty())BI.insert(i);
-                else st.pop();
-
+                if (!st.empty()) {
+                    st.pop();   // matched with '('
+                } else {
+                    remove[i] = true; // extra ')'
+                }
             }
         }
+
+        // Step 2: Remaining '(' in stack are invalid
         while (!st.empty()) {
-            BI.insert(st.top());
+            remove[st.top()] = true;
             st.pop();
         }
-        string ans = "";
-        for (int i = 0; i < s.length(); i++) {
-            if (!BI.contains(i)) {
+
+        // Step 3: Build final answer
+        string ans;
+        for (int i = 0; i < n; i++) {
+            if (!remove[i]) {
                 ans.push_back(s[i]);
             }
         }
+
         return ans;
     }
 };
