@@ -52,5 +52,5 @@ public:
         return maxProfit;
     }
 };
-
-//  greedy approach where TC ;- O(n) and sc := O(1).
+//  greedy approach where TC ;- O(n) - beacuse we traverse the array once
+//  sc := O(1) - no extra space used we pnly used minprice andf maxprofit as variables.
