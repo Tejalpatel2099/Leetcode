@@ -1,3 +1,6 @@
+// TWO pointer approach
+// i will first find zero then will scan array and after this if i see non zero element then swap with zero position and them move zero pointer forward. 
+
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
