@@ -1,3 +1,5 @@
+//I create a temporary array of size m+n. Then I use two pointers to traverse the valid part of nums1 (0..m-1) and nums2, always placing the smaller element into the temp array. After one array finishes, I append the remaining elements from the other array. Finally, I copy the temp array back into nums1. This runs in O(m+n) time and O(m+n) extra space.
+
 class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
