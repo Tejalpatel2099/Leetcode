@@ -7,6 +7,13 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
+// Approach is  recursive DFS traversal 
+// i will look for P and q on the tree starting from root 
+// if current node is null then i will return null 
+// if current node matches either p or q 
+// TC - O(N) - we visit each node once so here N is total number of nodes in binary tree
+// SC- O(H) - h is height of tree (due to recursion stack)
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
@@ -14,40 +21,29 @@ public:
             return root;
         }
 
-        //f the current node matches either p or q, we return it.
-//Why? Because a node is its own ancestor.
-        int curr = root->val;
+        // if root value becomes equl to p or q value then return root 
+        if (root->val== p->val || root->val == q->val)
+            return root;
 
-        if(curr == p->val || curr == q->val) return root;
-//Recurse into the left and right subtrees to find p and q.
-        TreeNode* left = lowestCommonAncestor(root->left,p,q);
+        // Recurse into the left and right subtrees to find p and q.
+        TreeNode* left = lowestCommonAncestor(root->left, p, q);
         TreeNode* right = lowestCommonAncestor(root->right, p, q);
 
- //If:
-
-//p is found in one subtree, and
-//q is found in the other subtree,
-//Then the current node (root) is their lowest common ancestor. ✅
-
-
-        if(left != NULL && right != NULL) return root;
-
-
-// If only one side (left or right) returned non-null, we pass it up.
-//This means both p and q are in the same subtree, or one hasn't been found yet.
+        if (left && right) {
+            return root;
+        }
+        // if p is found in one subtree, and
+        // q is found in the other subtree,
+        // Then the current node (root) is their lowest common ancestor. 
+        else if (left != NULL && right != NULL)
+            return root;
+        // If only one side (left or right) returned non-null, we pass it up.
+        // This means both p and q are in the same subtree, or one hasn't been
+        // found yet.
         if (left == nullptr) {
             return right;
         }
         return left;
 
-        // Below code is for binary search tree (not for binary tree)
-        // if (curr < p->val && curr < q->val) {
-        //     return lowestCommonAncestor(root->right, p, q);
-        // }
-        // if ( curr > p->val && curr > q->val) {
-        //     return lowestCommonAncestor(root->left, p, q);
-        // }
-        // return root;
     }
-       
 };
