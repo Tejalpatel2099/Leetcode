@@ -1,39 +1,43 @@
-
 class Solution {
 public:
     string minRemoveToMakeValid(string s) {
-        int n = s.size();
+        unordered_set<int> badIndex;
         stack<int> st;
-        vector<bool> remove(n, false);
 
-        // Step 1: Scan the string
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < s.length(); i++) {
             if (s[i] == '(') {
                 st.push(i);
-            } 
-            else if (s[i] == ')') {
+                cout << "inserting index stack" << i << endl;
+            } else if (s[i] == ')') {
                 if (!st.empty()) {
-                    st.pop();   // matched with '('
+                    st.pop();
                 } else {
-                    remove[i] = true; // extra ')'
+                    cout << "inserting badindex " << i << endl;
+                    // s.erase(i,1);  // if stack is empty there is no brackets
+                    // so add its index to bad index
+                    badIndex.insert(i);
                 }
             }
         }
 
-        // Step 2: Remaining '(' in stack are invalid
-        while (!st.empty()) {
-            remove[st.top()] = true;
+        while (!st.empty()) { // if stack is empty add other mismatched to bad
+                              // index
+            badIndex.insert(st.top());
+            cout << "inserting from stack in badindex" << st.top() << endl;
             st.pop();
         }
+        
 
-        // Step 3: Build final answer
-        string ans;
-        for (int i = 0; i < n; i++) {
-            if (!remove[i]) {
+        string ans = "";
+        for (int i = 0; i < s.length(); i++) {
+            cout <<" loop index "<< i << endl;
+            if (!badIndex.contains(i)) {
+                // ans = ans + s[i];
                 ans.push_back(s[i]);
+                // s.erase(i, 1);
+                cout <<"adding index "<< i <<endl;
             }
         }
-
         return ans;
     }
 };
