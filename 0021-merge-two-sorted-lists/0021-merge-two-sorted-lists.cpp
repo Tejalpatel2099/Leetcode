@@ -8,6 +8,24 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+ //Can either list be empty?
+ // Should the result also be a sorted linked list in ascending order?
+ // Are duplicate values allowed?
+ 
+ //.........BRUTE .............
+ // I will traverse the lsit and collect all node alues in array and then sort the array and cretae a new linke dlist from sorted array 
+ // tc :- O(N log N) — due to sorting the array.
+ // sc:-  O(N) — for storing values in an array and building a new list.
+
+ // Optimized Approach (Two Pointer Technique – Merge in-place)
+// Idea:// Use two pointers to traverse list1 and list2.
+// Compare the current nodes of both lists.
+// Append the smaller node to the result list.
+// Move the pointer of the list from which the node was taken.
+// O(N + M), where N and M are lengths of the two lists.
+// O(1) (only a few pointers used; in-place merge).
+
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
