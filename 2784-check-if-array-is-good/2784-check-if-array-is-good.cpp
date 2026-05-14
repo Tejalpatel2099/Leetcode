@@ -1,3 +1,6 @@
+//I first find the maximum number in the array because that determines the possible value of n. Then I check if the array length is n + 1, since a valid base array contains one duplicate of n. After that, I count frequencies of each number and verify that numbers from 1 to n-1 appear exactly once, while n appears exactly twice. If any condition fails, I return false
+// TC - O(n)
+// SC - O(n)
 class Solution {
 public:
     bool isGood(vector<int>& nums) {
