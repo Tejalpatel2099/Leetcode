@@ -25,7 +25,7 @@
 
 // To get all operations in O(1) time:
 
-// \U0001f539 Use:
+// 🔹 Use:
 // unordered_map<int, int> — stores val → index in an array
 
 // vector<int> — stores the actual elements for O(1) random access
@@ -40,7 +40,7 @@
 // ✅ 4. Implementation Strategy
 // Here’s the step-by-step logic:
 
-// \U0001f538 insert(val)
+// 🔸 insert(val)
 // If val exists in map, return false.
 
 // Else:
@@ -51,7 +51,7 @@
 
 // Return true.
 
-// \U0001f538 remove(val)
+// 🔸 remove(val)
 // If val doesn't exist in map, return false.
 
 // Else:
@@ -66,7 +66,7 @@
 
 // Return true.
 
-// \U0001f538 getRandom()
+// 🔸 getRandom()
 // Use rand() or built-in random to pick an index in the vector.
 
 // Return vec[randomIndex].
