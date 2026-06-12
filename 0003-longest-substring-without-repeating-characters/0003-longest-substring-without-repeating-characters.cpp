@@ -65,7 +65,7 @@ public:
         int len = 0;        // stores length of the string
         while (right < n) { // loop through string using right pointer
             // if current character s[right] was seen before and it is
-            // still inside the current windoe(left, right) then
+            // still inside the current window(left, right) then
             if (map[s[right]] != -1) {
                 // i will move left pointer to one position
                 // after the last index of that character
@@ -78,11 +78,9 @@ public:
             // update length if current substring (r - l
             // + 1) is longer than the previous
             len = max(len, right - left + 1);
-            // move to next charac ter in the string
+            // move to next character in the string
             right++;
         }
         return len;
     }
 };
-
-
