@@ -4,7 +4,7 @@ public:
         string ans = "";
 
         for (char c : s) {
-            if (std::isalpha(c)) {
+            if (std::islower(c)) {
 
                 ans.push_back(c);
             } else if (c == '*') {
