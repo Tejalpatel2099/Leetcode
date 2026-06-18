@@ -8,25 +8,12 @@ public:
             int second = target - first;
 
             if (m.find(second) != m.end()) {
-                return {m[second], i}; // Return indices of the two numbers
+                return {m[second], i};
             }
 
-            m[first] = i; // Store the index of the current number
+            m[first] = i;
         }
 
-        return {}; // Return empty if no solution found
+        return {};
     }
 };
- 
- // .............brute force ...........................
-//        for(int i = 0; i < nums.size(); i++) {
-//            for(int j = 0; j < nums.size(); j++) {
-//                if (nums[i] + nums[j] == target) {
-//                    return {i, j};
-//                }
-//            }
-           
-//        }
-//         return {};
-//     }
-// };
