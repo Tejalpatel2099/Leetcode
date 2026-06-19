@@ -1,48 +1,36 @@
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        vector<vector<int>> ans;
-
-        // Step 1: Sort the array to use two-pointer technique
+        vector<vector<int>> res;
         sort(nums.begin(), nums.end());
 
-        // Step 2: Loop through each number, treating it as the first number of the triplet
         for (int i = 0; i < nums.size(); i++) {
-            // Skip duplicate values for the first number
-            if (i > 0 && nums[i] == nums[i - 1]) continue;
-
-            int j = i + 1;              // Second pointer
-            int k = nums.size() - 1;    // Third pointer
-
-            // Step 3: Use two pointers to find valid triplets
-            while (j < k) {
-                int sum = nums[i] + nums[j] + nums[k];
-
+            if (i > 0 && nums[i] == nums[i - 1]) {
+                continue;
+            }
+            int l = i + 1, r = nums.size() - 1;
+            while (l < r) {
+                int sum = nums[i] + nums[l] + nums[r];
                 if (sum < 0) {
-                    // We need a larger number → move the left pointer right
-                    j++;
+                    l++;
                 } else if (sum > 0) {
-                    // We need a smaller number → move the right pointer left
-                    k--;
+                    r--;
                 } else {
-                    // Found a triplet
-                    ans.push_back({nums[i], nums[j], nums[k]});
-                    j++;
-                    k--;
+                    res.push_back({nums[i], nums[l], nums[r]});
+                    
 
-                    // Skip duplicates for second number
-                    while (j < k && nums[j] == nums[j - 1]) {
-                        j++;
+                    while(l < r && nums[l] == nums[l+1]) {
+                        l++;
                     }
-
-                    // Skip duplicates for third number
-                    while (j < k && nums[k] == nums[k + 1]) {
-                        k--;
+                    while(l < r && nums[r] == nums[r-1]) {
+                        r--;
                     }
+                    l++;
+                    r--;
                 }
             }
         }
 
-        return ans;
+        return res;
     }
 };
